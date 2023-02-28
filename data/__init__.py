@@ -13,7 +13,6 @@ class Dataset:
     def __init__(self):
         self.person = join("data", "person")
         self.cartoon = join("data", "cartoon")
-        self.augment = tv.transforms.ColorJitter(0.1, 0.1, 0, 0.05)
         self.normalize = tv.transforms.Normalize([127.5] * 3, [127.5] * 3)
 
     def __len__(self):
@@ -23,11 +22,9 @@ class Dataset:
         person = self.load(join(self.person, f"{item}.png"))
         cartoon = self.load(join(self.cartoon, f"{item}.png"))
         if random() < 0.5:
-            person = person.flip(-1)
-            cartoon = cartoon.flip(-1)
+            person, cartoon = person.flip(-1), cartoon.flip(-1)
         return tuple(map(
-            lambda image: self.normalize(image).cuda(0),
-            (self.augment(person), cartoon)
+            lambda image: self.normalize(image).cuda(0), (person, cartoon)
         ))
 
     @staticmethod

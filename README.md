@@ -4,13 +4,13 @@ __English__ | [简体中文](docs/README_cn.md)
 
 ## Catalogue
 
-1. [Brief Introduction](#Brief Introduction)
-2. [Effect Display](#Effect Display)
-3. [File Structure](#File Structure)
-4. [Quick Start](#Quick Start)
+1. [Brief Introduction](#BriefIntroduction)
+2. [Effect Display](#EffectDisplay)
+3. [File Structure](#FileStructure)
+4. [Quick Start](#QuickStart)
 5. [References](#References)
 
-## Brief Introduction
+## BriefIntroduction
 
 This project is the final assignment of my sophomore deep learning course.
 This project contents include:
@@ -21,11 +21,11 @@ This project contents include:
 * Train Pixel2PixelGAN on [Photo2Cartoon dataset](https://aistudio.baidu.com/aistudio/datasetdetail/79149);
 * Implement a Photo2Cartoon application.
 
-## Effect Display
+## EffectDisplay
 
 ![demo](docs/images/demo.png)
 
-## File Structure
+## FileStructure
 
 ```
 Photo2Cartoon
@@ -51,7 +51,7 @@ Photo2Cartoon
 └── train.py             # Training program
 ```
 
-## Quick Start
+## QuickStart
 
 ### 1.Clone
 
