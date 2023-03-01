@@ -2,4 +2,5 @@ log
 .idea
 data/person
 data/cartoon
-networks/*.pt
+networks/generator.pt
+networks/discriminator.pt
