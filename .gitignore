@@ -1,5 +1,6 @@
 log
 .idea
+outputs
 data/person
 data/cartoon
 networks/generator.pt
