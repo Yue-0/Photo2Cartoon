@@ -22,21 +22,18 @@ unet = UNet(cfg.g_channels)
 unet.load_state_dict(torch.load(
     os.path.join("networks", "generator.pt"), torch.device("cpu")
 ))
+unet.eval()
 
 for file in tqdm(os.listdir("inputs"), unit="images"):
     image = cv2.imread(os.path.join("inputs", file))
-    (h, w, _), size = image.shape, cfg.image_size
-    size *= min(h, w) // size
     cv2.imwrite(
-        os.path.join("output", file),
-        cv2.resize(cv2.cvtColor(
-            uint8((unet(torch.unsqueeze(normal(
+        os.path.join("outputs", file),
+        cv2.resize(cv2.cvtColor(uint8(
+            (unet(torch.unsqueeze(normal(
                 torch.tensor(cv2.cvtColor(
-                    cv2.resize(image, (size,) * 2),
-                    cv2.COLOR_BGR2RGB
-                ), dtype=torch.float),
+                    cv2.resize(image, (cfg.image_size,) * 2), cv2.COLOR_BGR2RGB
+                ).transpose((2, 0, 1)), dtype=torch.float),
                 [127.5] * 3, [127.5] * 3
-            ), 0)) + 1) * 127.5),
-            cv2.COLOR_RGB2BGR
-        ), (w, h))
+            ), 0)).detach() + 1) * 127.5
+        )[0].transpose((1, 2, 0)), cv2.COLOR_RGB2BGR), image.shape[:2][::-1])
     )
