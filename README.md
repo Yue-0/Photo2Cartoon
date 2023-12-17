@@ -12,7 +12,7 @@ __English__ | [简体中文](docs/README_cn.md)
 
 ## BriefIntroduction
 
-This project is the final assignment of my sophomore deep learning course.
+This project is the final assignment of my deep learning course.
 This project contents include:
 
 * Implementation [Pixel2PixelGAN](https://arxiv.org/pdf/1611.07004.pdf);
